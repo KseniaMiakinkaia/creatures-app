@@ -1,0 +1,2 @@
+<app-search (valueChanged)="performSearch($event)"></app-search>
+<app-creature-table [creatures]="(creatures | async)!" (loadAnotherPage)="loadCreatures($event)" (loadMore)="loadMore($event)"></app-creature-table>

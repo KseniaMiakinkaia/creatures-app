@@ -1,0 +1,52 @@
+<section class="creature-table">
+    <div class="creature-table-info">
+        <span>Найдено: {{creatures?.count}}</span>
+        <form class="creature-table-info-controls" [formGroup]="loadTypeForm">
+            <input class="creature-table-info-controls-input" 
+                type="radio" 
+                id="pagination" 
+                [value]="loadType.PAGINATION" 
+                formControlName="loadType">
+            <label class="creature-table-info-controls-label" for="pagination">Постраничное переключение</label>
+            <input class="creature-table-info-controls-input"
+                type="radio"
+                id="scroll"
+                [value]="loadType.SCROLL"
+                formControlName="loadType">
+            <label class="creature-table-info-controls-label" for="scroll">Динамическая прокрутка</label>
+        </form>
+    </div>
+    <table class="creature-table-content">
+        <tr>
+            <th scope="col">Номер</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Год рождения</th>
+            <th scope="col">Вес</th>
+            <th scope="col">Рост</th>
+        </tr>
+        <tr *ngFor="let creature of creatures?.results; let ind = index;">
+            <td>{{ind+1}}</td>
+            <td>{{creature.name}}</td>
+            <td>{{creature.birth_year}}</td>
+            <td>{{creature.mass}}</td>
+            <td>{{creature.height}}</td>
+        </tr>
+        <tr *ngIf="!creatures?.count">
+            <td colspan="5"> Ничего не найдено :(</td>
+        </tr>
+    </table>
+    <div *ngIf="loadTypeForm.get('loadType')?.value === loadType.PAGINATION">
+        <button 
+            class="creature-table-pagination-button creature-table-pagination-button--prev"
+            [disabled]="!creatures?.previous"
+            (click)="onLoadAnotherPage(creatures?.previous!)">
+                Prev
+        </button>
+        <button 
+            class="creature-table-pagination-button creature-table-pagination-button--next"
+            [disabled]="!creatures?.next"
+            (click)="onLoadAnotherPage(creatures?.next!)">
+                Next
+        </button>
+    </div>
+</section>
