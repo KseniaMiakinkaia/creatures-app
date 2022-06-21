@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { filter, map, Observable, switchMap, take, tap } from 'rxjs';
+import {  map, Observable, switchMap } from 'rxjs';
 
 import { CreatureResponse } from '../../models/creature.model';
 import { CreatureService } from '../../services/creature.service';

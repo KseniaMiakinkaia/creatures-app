@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../environments/environment';
-import { Creature, CreatureResponse } from '../models/creature.model';
-import { map, Observable, pipe, take } from 'rxjs';
+import { CreatureResponse } from '../models/creature.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

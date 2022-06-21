@@ -1,4 +1,4 @@
-export interface Creature {
+interface Creature {
     name: string;
 	height: string;
 	mass: string;
